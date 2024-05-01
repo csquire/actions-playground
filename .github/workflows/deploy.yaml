@@ -18,20 +18,32 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.12
+          cache: 'pip'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
 
       - name: Install go-task
         run: wget -c https://github.com/go-task/task/releases/download/v3.36.0/task_linux_amd64.tar.gz -O - | tar -xz -C /usr/local/bin/
 
-      - uses: actions/checkout@v4
-
       - name: Install Snowflake CLI
         run: pip install snowflake-cli-labs
 
-      - name: Install SnowSQL
+      - name: Install Tools
         run: |
           wget -cqO- https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowflake-snowsql-1.2.32-1.x86_64.rpm -O snowflake-snowsql.rpm
           echo "71ae69821279da7a08be99a4980077a0fa8768e13d64b68fc868f5a37ef3752f snowflake-snowsql.rpm" | sha256sum --check
           sudo rpm -i snowflake-snowsql.rpm
+      
+      - name: Install gomplate
+        run: npm install -g gomplate
+
+      - name: Install Packages
+        run: sudo apt-get install jq
+
+      - uses: actions/checkout@v4
 
       - name: Run task
         run: |
@@ -39,3 +51,5 @@ jobs:
           snow --help
           snowsql --help
           docker --help
+          gomplate --help
+          jq --help
