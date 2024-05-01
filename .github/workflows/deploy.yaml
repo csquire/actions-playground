@@ -31,7 +31,7 @@ jobs:
         run: |
           wget -cqO- https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowflake-snowsql-1.2.32-1.x86_64.rpm -O snowflake-snowsql.rpm
           echo "71ae69821279da7a08be99a4980077a0fa8768e13d64b68fc868f5a37ef3752f snowflake-snowsql.rpm" | sha256sum --check
-          sudo alien -i snowflake-snowsql.rpm
+          sudo rpm -i snowflake-snowsql.rpm
 
       - name: Run task
         run: |
