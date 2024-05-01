@@ -16,6 +16,6 @@ jobs:
       - name: Setup Docker Buildx 
         uses: docker/setup-buildx-action@v3
       - name: Install go-task
-        run: wget -c https://github.com/go-task/task/releases/download/v3.36.0/task_linux_amd64.tar.gz -O - | tar -xz
+        run: wget -c https://github.com/go-task/task/releases/download/v3.36.0/task_linux_amd64.tar.gz -O - | tar -xz -C /usr/local/bin/
       - name: Run task
         run: task foo
