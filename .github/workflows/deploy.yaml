@@ -18,12 +18,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.12
-          cache: 'pip'
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install go-task
         run: wget -c https://github.com/go-task/task/releases/download/v3.36.0/task_linux_amd64.tar.gz -O - | tar -xz -C /usr/local/bin/
