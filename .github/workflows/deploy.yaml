@@ -38,3 +38,4 @@ jobs:
           task foo
           snow --help
           snowsql --help
+          docker --help
